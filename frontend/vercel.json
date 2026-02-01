@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm install && npm run build",
-  "outputDirectory": ".next",
   "framework": "nextjs",
+  "buildCommand": "cd .. && npm install && cd frontend && npm run build",
+  "installCommand": "npm install",
   "env": {
     "NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID": "dcaa265b9219504b901f02339249e02e"
   }
