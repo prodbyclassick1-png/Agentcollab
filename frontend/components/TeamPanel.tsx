@@ -5,7 +5,7 @@ import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAcc
 import { CONTRACTS, TEAM_REGISTRY_ABI, ProjectState } from "@/lib/contracts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { Users, UserPlus, CheckCircle, XCircle } from "lucide-react";
+import { Users, UserPlus, CheckCircle, XCircle, Clock } from "lucide-react";
 
 export function TeamPanel({ 
   projectId,

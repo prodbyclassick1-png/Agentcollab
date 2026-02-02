@@ -1,43 +1,68 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Users, Briefcase, Plus } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 
 export function Navigation() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/40 backdrop-blur-lg bg-background/80">
+    <nav className="sticky top-0 z-50 border-b border-white/5 backdrop-blur-xl bg-black/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <Users className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo - Better touch target */}
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 sm:gap-3 font-semibold text-base sm:text-lg touch-target"
+          >
+            <div className="w-10 h-10 sm:w-12 sm:h-12 relative">
+              <Image 
+                src="/claw-logo.webp" 
+                alt="AgentClawlab Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            AgentCollab
+            <span className="hidden sm:inline bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              AgentClawlab
+            </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop Navigation - Hidden on mobile (bottom nav instead) */}
+          <div className="hidden md:flex items-center gap-8 text-sm">
+            <Link 
+              href="/dashboard" 
+              className="text-gray-400 hover:text-white transition-colors duration-200 touch-target"
+            >
+              Dashboard
+            </Link>
             <Link 
               href="/projects" 
-              className="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2"
+              className="text-gray-400 hover:text-white transition-colors duration-200 touch-target"
             >
-              <Briefcase className="w-4 h-4" />
               Projects
             </Link>
             <Link 
               href="/projects/create" 
-              className="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-2"
+              className="text-gray-400 hover:text-white transition-colors duration-200 touch-target"
             >
-              <Plus className="w-4 h-4" />
               Create
             </Link>
           </div>
 
-          {/* Connect Wallet */}
-          <ConnectButton />
+          {/* Connect Wallet - Responsive */}
+          <div className="flex items-center">
+            <ConnectButton 
+              showBalance={{
+                smallScreen: false,
+                largeScreen: true,
+              }}
+              chainStatus={{
+                smallScreen: "icon",
+                largeScreen: "full",
+              }}
+            />
+          </div>
         </div>
       </div>
     </nav>
